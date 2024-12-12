@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+  <link rel="shortcut icon" href="../images/adminLogo.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/login_style.css" />
+
+  <title>Admin Sign-in</title>
+</head>
+
+<body>
+ 
+  <div class="wrapper">
+    <span class="bg-animate"></span>
+    <span class="bg-animate2"></span>
+
+    <div class="form-box login">
+      <h2 class="animation" style="--i:0; --j:21;">Admin Login</h2>
+      <form action="#" class="login-form">
+        <div class="input-box animation" style="--i:1; --j:22;">
+          <input type="text" id="Username" name="Username" required>
+          <label>Username</label>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box animation" style="--i:2; --j:23;">
+          <input type="password" id="Password" name="Password" required>
+          <label>Password</label>
+        </div>
+          <button type="submit" class="btn animation" style="--i:3; --j:24;"  id="login" value="Login">Login</button>
+          <div class="logreg-link animation" style="--i:4; --j:25;">
+            <p>Will you like so Login as super admin? <a href="#" class="register-link">Login</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="info-text login">
+        <h2 class="animation" style="--i:0; --j:20;">Welcom to admin login!</h2>
+        <p class="animation" style="--i:1; --j:21;">Connect to the admin page and veiw more characteristics on professionals.</p>
+      </div>
+
+      <div class="form-box register">
+        <h2 class="animation" style="--i:17; --j:0;">Sup_Admin Login</h2>
+        <form action="#" class="Sup-login-form">
+          <div class="input-box animation" style="--i:18; --j:1;">
+            <input class="input" id="Adminname" type="text" name="Username" required>
+            <label>Username</label>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box animation" style="--i:19; --j:2;">
+            <input class="input" id="A-Password" type="password" name="Password" required>
+            <label>Password</label>
+            <i class='bx bxs-user'></i>
+          </div>
+            <button type="submit" class="btn animation" style="--i:20; --j:3;" id="login" value="Login">Login</button>
+            <div class="logreg-link">
+              <p class="animation" style="--i:21; --j:4;">Want to login as admin? <a href="#" class="login-link">Login</a></p>
+            </div>
+          </form>
+        </div>
+        <div class="info-text register">
+          <h2 class="animation" style="--i:17; --j:0;">Welcom Back!</h2>
+          <p class="animation" style="--i:18; --j:1;">Login as super admin page and view more characteristics on admins.</p>
+        </div>
+    </div>
+
+    <script>
+      const wrapper = document.querySelector(".wrapper");
+      const registerLink = document.querySelector(".register-link");
+      const loginlink = document.querySelector(".login-link");
+
+      registerLink.onclick = () => {
+        wrapper.classList.add('active');
+      }
+
+      loginlink.onclick = () => {
+        wrapper.classList.remove('active');
+      }
+    </script>
+
+  <script src="../js/sweetalert.js"></script>
+  <script src="../js/login_js.js"></script>
+  <script src="../js/SUP_script.js"></script>
+</body>
+
+</html>

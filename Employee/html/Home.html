@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professionals Lists</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="shortcut icon" href="../images/adminLogo.jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../css/Home.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <style>
+    .container {
+      margin-bottom: 20px; /* Spacing between card containers */
+    }
+
+    .card-columns {
+      display: flex;
+      flex-direction: column; /* Stack cards in a column */
+      align-items: center; /* Center cards */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #000; /* Change the arrow color */
+      transition: transform 0.3s ease; Smooth transition effect
+    }
+
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      transform: scale(1.1); /* Scale up on hover */
+    }
+
+    .swiper-button-next:active,
+    .swiper-button-prev:active {
+      transform: scale(0.95); /* Slightly shrink on click */
+    }
+  </style> -->
+</head>
+
+<body>
+  <header class="header_part fixed-top">
+    <nav class="navbar bg-body-tertiary justify-content-between" data-bs-theme="dark">
+      <a class="navbar-brand" href="../html/Home.html">
+        <img src="../images/sup_logo3.png" alt="Logo" width="100rem" height="90rem" class="d-inline-block align-text">
+        Employee Directory
+      </a>
+      <form class="d-flex" role="search">
+        <input id="searchInput" class="form-control me-2 w-750" type="search" placeholder="Search by name/Address"
+          aria-label="Search">
+      </form>
+      <a href="#"><button id="admin" class="btn btn-outline-success me-2"  type="button"
+        onclick="window.location.href='../Admin/login.html'">Admin
+          page</button></a>
+    </nav>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item"><button class="nav-link selected">All</button></li>
+      <li class="nav-item"><button class="nav-link">Banks</button></li>
+      <li class="nav-item"><button class="nav-link">Commerce</button></li>
+      <li class="nav-item"><button class="nav-link">Cabaret</button></li>
+      <li class="nav-item"><button class="nav-link">Health</button></li>
+      <li class="nav-item"><button class="nav-link">Hotel</button></li>
+      <li class="nav-item"><button class="nav-link">Market</button></li>
+      <li class="nav-item"><button class="nav-link">Supermarket</button></li>
+      <li class="nav-item"><button class="nav-link">Restaurant</button></li>
+      <li class="nav-item"><button class="nav-link">Tourism</button></li>
+    </ul>
+  </header>
+  <br>
+
+  <div class="container py-5" id="contain">
+    <h1 class="text-center animated">Welcome to our Employee Selection</h1>
+
+    <div id="cardContainer" class="card-columns">
+      <!-- Cards will be dynamically added here -->
+    </div>
+    
+  </div>
+
+  <script>
+    // Get the container where the cards will be added
+    let getData = localStorage.getItem('userProfile') ? JSON.parse(localStorage.getItem('userProfile')) : [];
+    let cardContainer = $("#cardContainer");
+
+    // Clear the container
+    cardContainer.empty();
+
+    // Loop through the data from local storage
+    getData.forEach((userProfile, index) => {
+      let address = `${userProfile.employeeDepartment} ${userProfile.employeeDistrict} ${userProfile.employeeNeighborhood} ${userProfile.employeeRegion} ${userProfile.employeepLocation}`;
+      let img = userProfile.picture;
+      let title = userProfile.employeeName;
+      let sector = userProfile.employeeSector;
+      let activity = userProfile.employeeActivity;
+      let phone = userProfile.employeePhone;
+      let region = userProfile.employeeRegion;
+      let email = userProfile.employeeEmail;
+
+      let card = `
+        <div class="card mb-3" onclick="showCardDetails(this)">
+          <img src="${img}" class="card-img-top" alt="..." id="img-${index}">
+          <div class="card-body">
+            <h5 class="card-title" id="name-${index}">${title}</h5>
+            <p class="card-text" id="sector-${index}"><span class="emoji">📔</span>${sector}</p>
+            <p class="card-text" id="activity-${index}"><span class="emoji">💻</span>${activity}</p>
+            <p class="card-text" id="phone-${index}"><span class="emoji">📞</span>${phone}</p>
+            <p class="card-text" id="address-${index}" style="display:none">${address}</p>
+            <p class="card-text" id="region-${index}"><span class="emoji">📍</span>${region}</p>
+            <p class="card-text" id="email-${index}" style="display:none"><span class="emoji">📧</span>${email}</p>
+          </div>
+        </div>`;
+      
+      // Create a new container for each card
+      cardContainer.append(card);
+    });
+
+    function filterCards(searchTerm) {
+      $("#cardContainer .card").each(function () {
+        var title = $(this).find(".card-title").text().toLowerCase();
+        var sector = $(this).find("[id^='sector']").text().toLowerCase();
+        var address = $(this).find("[id^='address']").text().toLowerCase();
+
+        if (searchTerm === 'all' || title.includes(searchTerm) || sector.includes(searchTerm) || address.includes(searchTerm)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    }
+
+    $('#searchInput').on('input', function () {
+      let val = $(this).val().toLowerCase();
+      filterCards(val);
+    });
+
+    // Handle sector filtering
+    const style = document.createElement('style');
+    style.textContent = `
+      .selected {
+        background-color: #000 !important; /* Replace with your color */
+        color: #fff !important; /* Replace with your color */
+        border-radius: 0px !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Get all the buttons
+    let buttons = document.querySelectorAll('.nav-link');
+
+    // Set the "All" button as selected by default
+    buttons[0].classList.add('selected');
+
+    // Add a click event listener to each button
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        // Remove the 'selected' class from all buttons
+        buttons.forEach(btn => btn.classList.remove('selected'));
+
+        // Add the 'selected' class to the clicked button
+        this.classList.add('selected');
+
+        // Filter the cards
+        filterCards(this.textContent.toLowerCase());
+      });
+    });
+
+    function showCardDetails(currentCard) {
+      // Get the index from the card's corresponding elements
+      const index = currentCard.querySelector('.card-title').id.split('-')[1];
+
+      // Get the elements using the unique IDs
+      const sectorElement = document.getElementById(`sector-${index}`);
+      const imageElement = document.getElementById(`img-${index}`);
+      const nameElement = document.getElementById(`name-${index}`);
+      const activityElement = document.getElementById(`activity-${index}`);
+      const phoneElement = document.getElementById(`phone-${index}`);
+      const addressElement = document.getElementById(`address-${index}`);
+      const regionElement = document.getElementById(`region-${index}`);
+      const emailElement = document.getElementById(`email-${index}`);
+
+      // Extract the text content and image source
+      const name = nameElement.textContent.trim();
+      const sector = sectorElement.textContent.trim();
+      const imageSource = imageElement.src;
+      const activity = activityElement.textContent.trim();
+      const phone = phoneElement.textContent.trim();
+      const address = addressElement.textContent.trim();
+      const region = regionElement.textContent.trim();
+      const email = emailElement.textContent.trim();
+
+      // Create a custom HTML string to include the image and details
+      const customHTML = `
+        <img src="${imageSource}" alt="${sector}" width="100" height="100" class="circular-image">
+        <p>Name: ${name}</p>
+        <p>Sector: ${sector}</p>
+        <p>Activity: ${activity}</p>
+        <p>Phone: ${phone}</p>
+        <p>Address: ${address}</p>
+        <p>Region: ${region}</p>
+        <p>Email: <a href="mailto:${email}">${email}</a></p>
+      `;
+
+      Swal.fire({
+        title: 'Professional Details',
+        html: customHTML,
+        icon: null,
+        customClass: 'swal-glassy',
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Close'
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
