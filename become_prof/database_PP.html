@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stored Registration Data</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+h1 {
+            color: #343a40; 
+            text-align: center;
+           
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font: size 100px;;
+        color: gray;
+        text-decoration:underline;
+}
+.custom-search-input {
+    border: 2px solid #007bff; 
+    border-radius: 5px;
+    padding: 10px 15px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+.custom-search-input:focus {
+    border-color: #0056b3; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #f8f9fa; 
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    
+}
+.delete-button {
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.search-bar {
+    margin-bottom: 15px;
+}
+.logo {
+    max-width: 200px;
+    margin: 20px auto;
+    
+}
+@media (max-width: 500px) {
+    .container {
+        padding: 15px; 
+    }
+    .user-details .input-box {
+        margin-bottom: 10px; 
+    }
+}
+
+
+
+</style>
+</head>
+<body>
+    
+<div class="container">
+    <img src="office.png" alt="Your Logo" width="100" height="100"  class="logo"><h1>Potential Professional Database</h1>
+    <div class="search-bar mb-3">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i><img src="search.png"  width="30px" height="30px"></span>
+            <input  type="text" id="searchInput" class="form-control" placeholder="Search a potential professional..." aria-label="Search" aria-describedby="basic-addon1" onkeyup="searchData()">
+        </div>
+    </div>
+    <table id="data-table" class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Residence</th>
+                <th>Job Sector</th>
+                <th>Personal Job Description</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+
+
+function createActionButtons(row, registration) {
+    const actionCell = row.insertCell();
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'delete-button';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', () => deleteRow(registration.index)); 
+    actionCell.appendChild(deleteButton);
+
+
+    const emailButton = document.createElement('button');
+    emailButton.className = 'email-button btn btn-primary';
+    emailButton.textContent = 'Email';
+    emailButton.addEventListener('click', () => openEmailClient(registration.email));
+    actionCell.appendChild(emailButton);
+}
+
+
+function addEmptyRow(tableBody) {
+    let row = tableBody.insertRow();
+    let cell = row.insertCell();
+    cell.colSpan = 9;
+    cell.textContent = 'No registration data found.';
+}
+
+function handleError(message) {
+    const tableBody = document.querySelector('#data-table tbody');
+    tableBody.innerHTML = ''; 
+    addEmptyRow(tableBody);
+    console.error(message);
+}
+
+function deleteRow(index) {
+    let storedData = localStorage.getItem('registrationData');
+    let registrationArray = JSON.parse(storedData);
+    registrationArray.splice(index, 1);
+    localStorage.setItem('registrationData', JSON.stringify(registrationArray));
+    displayData();
+}
+
+function searchData() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#data-table tbody tr');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+
+
+function openEmailClient(email) {
+    window.location.href = `mailto:${email}`;
+}
+
+function displayData() {
+    const storedData = localStorage.getItem('registrationData');
+    const tableBody = document.querySelector('#data-table tbody');
+    tableBody.innerHTML = '';
+
+    if (storedData) {
+        try {
+            const registrationArray = JSON.parse(storedData);
+            if (Array.isArray(registrationArray)) {
+                if (registrationArray.length === 0) {
+                    addEmptyRow(tableBody);
+                } else {
+                    registrationArray.forEach((registration, index) => {
+                        registration.index = index;
+                        const row = tableBody.insertRow();
+                        for (const key in registration) {
+                            if (key !== 'index') { 
+                                const cell = row.insertCell();
+                                cell.textContent = registration[key];
+                            }
+                        }
+                        createActionButtons(row, registration);
+                    });
+                }
+            } else {
+                handleError("Error: Data in localStorage is not an array.");
+            }
+        } catch (error) {
+            handleError("Error parsing JSON from localStorage: " + error);
+        }
+    } else {
+        addEmptyRow(tableBody);
+    }
+}
+
+displayData();
+</script>
+</body>
+</html>
