@@ -4,7 +4,7 @@
 
 /*Colour Setup*/
 :root {
-    --primary: #2311ca;
+    --primary: #9844eb;
     --blackbooth: #212429;
     --black: #000000;
     --grey: #d3d4db;
@@ -110,150 +110,14 @@ body {
 /*background of body */
 
 body {
+    position: relative;
     font-family: "Poppins", sans-serif;
-    background-color: var(--blackbooth) !important;
-    margin: 0;
-    padding: 20px;
+    background-image: url("../images/bg.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: 2;
 
-}
-
-body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-
-  /*.swiper {
-    width: 100%;
-    height: 300px;
-    margin: 20px auto;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .append-buttons {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .append-buttons a {
-    display: inline-block;
-    border: 1px solid #007aff;
-    color: #007aff;
-    text-decoration: none;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin: 0 10px;
-    font-size: 13px;
-  }
-
-.swiper-slide img {
-    border-radius: 10px 10px 0 0;
-    width: 100%;
-    height: auto;
-}
- /* Responsive buttons */
- /*
- .swiper-button-next,
- .swiper-button-prev {
-     color: #fff; /* Button color */
-     /*
-     width: 40px;
-     height: 40px;
-     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
- /*    border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     transition: background-color 0.3s;
- }
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover *//*
-}
-
-/* Positioning buttons *//*
-.swiper-button-next {
-    right: 10px;
-}
-
-.swiper-button-prev {
-    left: -10px;
-}
-
-/* Pagination *//*
-.swiper-pagination {
-    bottom: 10px; /* Adjust pagination position *//*
-}
-
-.swiper .swiper-wrapper .swiper-slide .card h-100{
-    position: absolute;
-    inset: 0 0 0 0;
-    transform:
-        rotateY(calc(var(--position) - 1) * (360 / var(--quantity)) * 1deg)
-        translateZ(550px);
-}
-*/
-section{
-    position: relative;
-    width: calc(min(47rem, 90%));
-    margin: 0 auto;
-    min-height: 100vh;
-    column-gap: 3rem;
-    padding-block: min(20vh, 3rem);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.swiper-container{
-    position: relative;
-}
-.swiper{
-    width: 100%;
-    padding: 60px 0 95px 0s;
-}
-.swiper-wrper{
-    width: 10rem;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: self-start;
-    position: relative;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.shape-1,
-.shape-2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.shape-1 {
-    background: rgba(255, 0, 0, 0.1);
-}
-
-.shape-2 {
-    background: rgba(0, 0, 255, 0.1);
 }
 
 /*Cards CSS*/
@@ -263,12 +127,14 @@ section{
     box-sizing: border-box;
 }
 
-
+/*body{
+        background-color: #f9f6f2;
+}*/
 .card-img-top {
     border-radius: 50%;
-    height: 250px;
-    width: 250px;
-    padding: 50px;
+    height: 150px;
+    width: 150px;
+    padding: 20px;
     object-fit: cover;
     filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.6));
 }
@@ -281,7 +147,7 @@ section{
     backdrop-filter: blur(15px);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
+    align-items: center;
 }
 
 .card-text {
@@ -333,7 +199,6 @@ section{
 
 #cardContainer {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
 }
 

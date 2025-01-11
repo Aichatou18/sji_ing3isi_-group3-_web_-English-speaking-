@@ -6,53 +6,8 @@ let cardContainer = $("#cardContainer");
 // Clear the container
 cardContainer.empty();
 
-
-
-//adding swiper
-
-// import Swiper JS
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-
-const swiper = new Swiper('.swiper', {
-            direction: 'vertical', // Set the direction to horizontal
-            loop: true, // Enable looping of slides
-           // slidesPerView: 1, // Show one slide at a time
-            //spaceBetween: 30, // Space between slides
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2, // Show 2 slides on small screens
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 3, // Show 3 slides on medium screens
-                    spaceBetween: 30,
-                },
-            },
-            // And if we need scrollbar
-            scrollbar: {
-              el: '.swiper-scrollbar',
-            },
-            modules: [Navigation, Pagination],
-
-        })
-
-
 // Loop through the data from local storage
-let newDat = getData.forEach(userProfile => {
+getData.forEach(userProfile => {
   let address = userProfile.employeeDepartment + userProfile.employeeDistrict
     + userProfile.employeeNeighborhood + userProfile.employeeRegion + userProfile.employeepLocation;
   let img = userProfile.picture;
@@ -79,7 +34,6 @@ let newDat = getData.forEach(userProfile => {
 </div>`
   cardContainer.append(col);
 });
-
 
 
 function filterCards(searchTerm) {
@@ -149,10 +103,10 @@ handleSearchInput(); // Call the function to set up the event listeners
 
 
 // Attach click event listener to the entire card
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-card.addEventListener('click', () => showCardDetails(card));
-});
+///"const cards = document.querySelectorAll('.card');
+//cards.forEach(card => {
+//card.addEventListener('click', () => showCardDetails(card));
+//});///
 
 
 //pop up of things

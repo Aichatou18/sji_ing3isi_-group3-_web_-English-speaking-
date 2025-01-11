@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=0.9" />
-  <link rel="shortcut icon" href="../images/adminLogo.jpeg" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/login_style.css" />
 
@@ -12,76 +11,84 @@
 </head>
 
 <body>
- 
-  <div class="wrapper">
-    <span class="bg-animate"></span>
-    <span class="bg-animate2"></span>
+  <div class="container">
 
-    <div class="form-box login">
-      <h2 class="animation" style="--i:0; --j:21;">Admin Login</h2>
-      <form action="#" class="login-form">
-        <div class="input-box animation" style="--i:1; --j:22;">
-          <input type="text" id="Username" name="Username" required>
-          <label>Username</label>
-          <i class='bx bxs-user'></i>
-        </div>
-        <div class="input-box animation" style="--i:2; --j:23;">
-          <input type="password" id="Password" name="Password" required>
-          <label>Password</label>
-        </div>
-          <button type="submit" class="btn animation" style="--i:3; --j:24;"  id="login" value="Login">Login</button>
-          <div class="logreg-link animation" style="--i:4; --j:25;">
-            <p>Will you like so Login as super admin? <a href="#" class="register-link">Login</a></p>
+    <div class="forms-container">
+
+      <div class="signin-signup"><br>
+        <form action="" class="sign-in-form">
+          <a class="navbar-brand" href="../html/Home.html">
+            <img src="../images/logo2.svg" alt="Logo" width="30" height="24">
+            Employee_Directory
+          </a> <br>
+          <h2 class="title">Sign in</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input id="Username" type="text" placeholder="Username" required />
           </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input id="Password" type="password" placeholder="Password" required />
+          </div>
+          <input type="submit" id="login" value="Login" class="btn solid" />
+
+
+        </form>
+
+        <form action="" id="sign_up" class="sign-up-form"><br>
+          <a class="navbar-brand" href="../html/Home.html">
+            <img src="../images/logo2.svg" alt="Logo" width="30" height="24">
+            Employee_Directory
+          </a> <br>
+          <h2 class="title">Sign up</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input id="username" type="text" placeholder="Username" required />
+          </div>
+          <div class="error"></div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input id="email" type="email" placeholder="Email" required />
+          </div>
+          <div class="error"></div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input id="password" type="password" placeholder="Password" required />
+          </div>
+          <div class="error"></div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input id="psw" type="password" placeholder="Confirm Password" required />
+          </div>
+          <div class="error"></div>
+          <input type="submit" id="btn" class="btn" value="Sign up" />
+
+
+
         </form>
       </div>
-      <div class="info-text login">
-        <h2 class="animation" style="--i:0; --j:20;">Welcom to admin login!</h2>
-        <p class="animation" style="--i:1; --j:21;">Connect to the admin page and veiw more characteristics on professionals.</p>
-      </div>
-
-      <div class="form-box register">
-        <h2 class="animation" style="--i:17; --j:0;">Sup_Admin Login</h2>
-        <form action="#" class="Sup-login-form">
-          <div class="input-box animation" style="--i:18; --j:1;">
-            <input class="input" id="Adminname" type="text" name="Username" required>
-            <label>Username</label>
-            <i class='bx bxs-user'></i>
-          </div>
-          <div class="input-box animation" style="--i:19; --j:2;">
-            <input class="input" id="A-Password" type="password" name="Password" required>
-            <label>Password</label>
-            <i class='bx bxs-user'></i>
-          </div>
-            <button type="submit" class="btn animation" style="--i:20; --j:3;" id="login" value="Login">Login</button>
-            <div class="logreg-link">
-              <p class="animation" style="--i:21; --j:4;">Want to login as admin? <a href="#" class="login-link">Login</a></p>
-            </div>
-          </form>
-        </div>
-        <div class="info-text register">
-          <h2 class="animation" style="--i:17; --j:0;">Welcom Back!</h2>
-          <p class="animation" style="--i:18; --j:1;">Login as super admin page and view more characteristics on admins.</p>
-        </div>
     </div>
 
-    <script>
-      const wrapper = document.querySelector(".wrapper");
-      const registerLink = document.querySelector(".register-link");
-      const loginlink = document.querySelector(".login-link");
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
 
-      registerLink.onclick = () => {
-        wrapper.classList.add('active');
-      }
+        </div>
+        <img src="../images/log.svg" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
 
-      loginlink.onclick = () => {
-        wrapper.classList.remove('active');
-      }
-    </script>
-
+        </div>
+        <img src="../images/register.svg" class="image" alt="" />
+      </div>
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <script src="../js/sign_up.js"></script>
+  <script src="../js/sign_in.js"></script>
   <script src="../js/sweetalert.js"></script>
   <script src="../js/login_js.js"></script>
-  <script src="../js/SUP_script.js"></script>
 </body>
 
 </html>
