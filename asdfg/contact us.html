@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Join Us</title>
+    <style>
+       .container {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2 {
+        color: #343a40;
+        text-align: center;
+
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font: size 100px;;
+        color: gray;
+        text-decoration:underline;
+        }
+        .img-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-container">
+            <h2><img src="image/office.png"  width="100px" height="100px"><br>Fill the form</h2>
+
+        </div>
+        <form id="registrationForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <img src="image/user (1).png"  width="20px" height="20px">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="firstName" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <img src="image/user (2).png"  width="20px" height="20px">
+                        <label for="lastName" class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="lastName" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <img src="image/email (1).png"  width="20px" height="20px">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" placeholder="Enter your mail" id="email" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <img src="image/phone-call.png"  width="20px" height="20px">
+                        <label for="phone" class="form-label">Phone Number:</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter a valid phone number" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <img src="image/home.png"  width="20px" height="20px">
+                        <label for="town" class="form-label">Town of Residence:</label>
+                        <select class="form-select" id="residence" required>
+                            <option value="">Select a Town</option>
+                            <option value="Douala">Douala</option>
+                            <option value="Yaounde">Yaounde</option>
+                            <option value="Garoua">Garoua</option>
+                            <option value="Bamenda">Bamenda</option>
+                            <option value="Kumba">Kumba</option>
+                            <option value="Buea">Buea</option>
+                            <option value="Limbe">Limbe</option>
+                            <option value="Maroua">Maroua</option>
+                            <option value="Nkongsamba">Nkongsamba</option>
+                            <option value="Ebolowa">Ebolowa</option>
+                            <option value="Bertoua">Bertoua</option>
+                            <option value="Bafoussam">Bafoussam</option>
+                            <option value="Foumban">Foumban</option>
+                            <option value="Sangmelima">Sangmelima</option>
+                            <option value="Kribi">Kribi</option>
+                            <option value="Ngaoundéré">Ngaoundéré</option>
+                            <option value="Edéa">Edéa</option>
+                            <option value="Bafang">Bafang</option>
+                            <option value="Dschang">Dschang</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <img src="image/suitcase.png"  width="20px" height="20px">
+                        <label for="jobSector" class="form-label">Job Sector:</label>
+                        <select class="form-select" id="resume" required>
+                            <option value="">Select a Job Sector</option>
+                            <option value="market">Market</option>
+                            <option value="supermarket">Supermarket</option>
+                            <option value="health">Health</option>
+                            <option value="bank">Bank</option>
+                            <option value="cabaret">Cabaret</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="tourism">Tourism</option>
+                            <option value="commerce">Commerce</option>
+                            <option value="hotel">Hotel</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <img src="image/employee.png"  width="20px" height="20px">
+                        <label for="jobDescription" class="form-label">Personal statement/Job Description:</label>
+                        <textarea class="form-control" id="jobDescription" placeholder="enter a personal statement and job description..." rows="3" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <img src="image/male-and-female.png"  width="20px" height="20px">
+                        <label class="form-label">Gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <button type="button" class="btn btn-primary btn-lg" onclick="registerUser()">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function registerUser() {
+    const formData = {};
+    formData.firstName = document.getElementById('firstName').value;
+    formData.lastName = document.getElementById('lastName').value;
+    formData.email = document.getElementById('email').value;
+    formData.phone = document.getElementById('phone').value;
+    formData.residence = document.getElementById('residence').value;
+    formData.resume = document.getElementById('resume').value;
+
+    formData.jobDescription = document.getElementById('jobDescription').value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    formData.gender = gender ? gender.value : "Not specified";
+
+    let storedData = localStorage.getItem('registrationData');
+    let registrationArray = storedData ? JSON.parse(storedData) : [];
+    registrationArray.push(formData);
+    localStorage.setItem('registrationData', JSON.stringify(registrationArray));
+
+    alert('Registration saved to local storage!');
+    document.getElementById('registrationForm').reset();
+}
+    </script>
+</body>
+</html>
