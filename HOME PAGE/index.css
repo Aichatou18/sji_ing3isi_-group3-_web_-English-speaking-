@@ -1,4 +1,7 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/* Universal Reset */
 *,
 *::before,
 *::after {
@@ -9,12 +12,14 @@
   text-decoration: none;
 }
 
+/* Root Variables */
 :root {
   --primary: #ec994b;
   --white: #ffffff;
   --bg: #f5f5f5;
 }
 
+/* Base styles */
 html {
   font-size: 62.5%;
   font-family: "Montserrat", sans-serif;
@@ -39,6 +44,7 @@ html {
   }
 }
 
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 1.3rem;
 }
@@ -57,17 +63,20 @@ html {
   background: #f9f9f9;
 }
 
+/* Body styling */
 body {
   font-size: 1.6rem;
   background: var(--bg);
 }
 
+/* Container Styling */
 .container {
   max-width: 124rem;
   padding: 0 1rem;
   margin: 0 auto;
 }
 
+/* Text Center */
 .text-center {
   text-align: center;
 }
@@ -78,23 +87,26 @@ body {
   padding: 2rem 0;
 }
 
+/* Tranding Section */
 #tranding {
   padding: 4rem 0;
+  background: none; /* Removed background from section */
 }
 
-@media (max-width:1440px) {
+@media (max-width: 1440px) {
   #tranding {
     padding: 7rem 0;
   }
 }
 
+/* Swiper Styles */
 #tranding .tranding-slider {
   height: 52rem;
   padding: 2rem 0;
   position: relative;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   #tranding .tranding-slider {
     height: 45rem;
   }
@@ -106,12 +118,8 @@ body {
   position: relative;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .tranding-slide {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-  .tranding-slide .tranding-slide-img img {
     width: 28rem !important;
     height: 36rem !important;
   }
@@ -161,6 +169,7 @@ body {
   display: none;
 }
 
+/* Swiper Control Styles */
 .tranding-slider-control {
   position: relative;
   bottom: 2rem;
@@ -174,28 +183,28 @@ body {
   transform: translateX(-58%) !important;
 }
 
-@media (max-width:990px) {
+@media (max-width: 990px) {
   .tranding-slider-control .swiper-button-next {
     left: 70% !important;
     transform: translateX(-70%) !important;
   }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
   .tranding-slider-control .swiper-button-next {
     left: 80% !important;
     transform: translateX(-80%) !important;
   }
 }
 
-@media (max-width:990px) {
+@media (max-width: 990px) {
   .tranding-slider-control .swiper-button-prev {
     left: 30% !important;
     transform: translateX(-30%) !important;
   }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
   .tranding-slider-control .swiper-button-prev {
     left: 20% !important;
     transform: translateX(-20%) !important;
@@ -234,13 +243,157 @@ body {
 .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
   background: var(--primary);
 }
-/* Add this to your CSS file */
 
-/* CSS animation for scaling the image */
+/* Added Animation for Image Scale on Click */
 .tranding-slide-img img {
-    transition: transform 0.3s ease;
-  }
+  transition: transform 0.3s ease;
+}
 
-  .tranding-slide-img img.clicked {
-    transform: scale(1.1); /* Scale the image when clicked */
+.tranding-slide-img img.clicked {
+  transform: scale(1.1); /* Scale the image when clicked */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: aqua;
+}
+
+.dropdown-menu {
+  background-color: #333;
+}
+
+.dropdown-item {
+  color: white;
+font-size: larger;
+}
+
+.dropdown-item:hover {
+  color: aqua;
+}
+
+/* Button Styles inside Image Slider */
+.tranding-slide-content button {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.tranding-slide-content button:hover {
+  background-color: #c77f3e;
+}
+
+/* For Gallery Image */
+.img-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.img-container {
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 100px;
+  height: 100px;
+}
+
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.Container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header{
+    background-color: black;
+}
+
+
+
+.img-gallery {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center the gallery horizontally */
+
+}
+
+.img-Container {
+border-radius: 50%;
+overflow: hidden;
+margin: 10px;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+width: 100px; /* Set the width */
+height: 100px; /* Set the height */
+}
+
+.img-Container img {
+  max-width: 100%; /* Ensure images fit within the round container */
+  height: auto;    /* Maintain aspect ratio */
+  display: block;  /* Remove extra space below the image */
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .img-gallery {
+      flex-direction: column; /* Stack images vertically on smaller screens */
+      align-items: center;     /* Center images vertically */
   }
+}
+
+p1{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:25px;
+  justify-items: center;
+  color:darkcyan;
+}
+
+.scroll-text {
+  overflow: hidden;
+}
+.scroll-text p {
+  animation: scroll 15s linear infinite;
+}
+
+
+@keyframes scroll {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+p{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
