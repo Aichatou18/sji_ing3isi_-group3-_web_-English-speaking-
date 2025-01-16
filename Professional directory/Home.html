@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professionals Lists</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="shortcut icon" href="../images/adminLogo.jpeg" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/Home.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <header class="header_part fixed-top">
+    <nav class="navbar bg-body-tertiary justify-content-between" data-bs-theme="dark">
+      <a class="navbar-brand" href="../html/Home.html">
+        <img src="images/sup_logo3.png" alt="Logo" width="100rem" height="90rem" class="d-inline-block align-text">
+        Employee Directory
+      </a>
+      <form class="d-flex" role="search">
+        <input id="searchInput" class="form-control me-2 w-750" type="search" placeholder="Search by name/Address" aria-label="Search">
+      </form>
+      <div class="nav-item">
+        <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">
+          Join Us <i class="bi bi-people"></i>
+        </button>
+
+        <a href="#"><button id="admin" class="btn btn-outline-success me-2" type="button" onclick="window.location.href='login.html'">Admin page</button></a>
+
+        <!-- Contact Us Button -->
+        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</button>
+      </div>
+    </nav>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item"><button class="nav-link selected">All</button></li>
+      <li class="nav-item"><button class="nav-link" id="banks">Banks</button></li>
+      <li class="nav-item"><button class="nav-link"id="commerce">Commerce</button></li>
+      <li class="nav-item"><button class="nav-link"id="cabaret">Cabaret</button></li>
+      <li class="nav-item"><button class="nav-link"id="health">Health</button></li>
+      <li class="nav-item"><button class="nav-link"id="hotel">Hotel</button></li>
+      <li class="nav-item"><button class="nav-link" id="market">Market</button></li>
+      <li class="nav-item"><button class="nav-link"id="supermarket">Supermarket</button></li>
+      <li class="nav-item"><button class="nav-link"id="restaurant">Restaurant</button></li>
+      <li class="nav-item"><button class="nav-link"id="tourism">Tourism</button></li>
+    </ul>
+  </header>
+  <div class="container py-5" id="contain">
+    <h1 class="text-center animated">Welcome to our Employee Selection</h1>
+
+    <div id="cardContainer" class="card-columns">
+      <!-- Cards will be dynamically added here -->
+    </div>
+
+    <!-- Scrollable modal for user registration -->
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Fill the Form</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="#" id="myForm">
+                <div class="card imgholder">
+                  <label for="imgInput" class="upload">
+                    <input type="file" name="" id="imgInput">
+                    <i class="bi bi-plus-circle-dotted"></i>
+                  </label>
+                  <img src="./image/Profile Icon.webp" alt="" width="200" height="200" class="img">
+                </div>
+                <div class="inputField">
+                  <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="" id="name" required>
+                  </div>
+                  <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="" id="email" required>
+                  </div>
+                  <div>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" name="" id="phone" minlength="9" required>
+                  </div>
+                  <div id="error-message"></div>
+                  <div>
+                    <label for="Sector">Sector:</label>
+                    <select class="form-select" aria-label="Default select example" id="Sector" required>
+                      <option value="">Select a Sector</option>
+                      <option value="Banks"  >Banks</option>
+                      <option value="Commerce" >Commerce</option>
+                      <option value="Cabaret" >Cabaret</option>
+                      <option value="Health" >Health</option>
+                      <option value="Hotel" >Hotel</option>
+                      <option value="Market" >Market</option>
+                      <option value="Supermarket" >Supermarket</option>
+                      <option value="Restaurant" >Restaurant</option>
+                      <option value="Tourism" >Tourism</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="activity">Activity:</label>
+                    <input type="text" name="" id="activity" required>
+                  </div>
+                  <div>
+                    <label for="Region">Region:</label>
+                    <select class="form-select" aria-label="Default select example" id="Region" required>
+                      <option value="">Select Region</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="Department">Department:</label>
+                    <select class="form-select" aria-label="Default select example" id="Department" required>
+                      <option value="">Select Department</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="District">District:</label>
+                    <select class="form-select" aria-label="Default select example" id="District" required>
+                      <option value="">Select District</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="Neighborhood">Neighborhood:</label>
+                    <select class="form-select" aria-label="Default select example" id="Neighborhood" required>
+                      <option value="">Select Neighborhood</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="pLocation">Location:</label>
+                    <select class="form-select" aria-label="Default select example" id="pLocation" required>
+                      <option value="">Select Location</option>
+                    </select>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <img src="../images/employee.png" width="20px" height="20px">
+                        <label for="jobDescription" class="form-label">Personal statement/Job Description:</label>
+                        <textarea class="form-control" id="jobDescription" placeholder="enter a personal statement and job description..." rows="3" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="form-group">
+                      <img src="../images/male-and-female.png" width="20px" height="20px">
+                      <label class="form-label">Gender:</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <div class="button">
+                <button type="button" class="btn btn-primary btn-lg" onclick="registerUser()">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="contactName" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contactEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="contactMessage" rows="3" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="submitContactForm()">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/Home.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    function submitContactForm() {
+      // Logic to handle contact form submission
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const message = document.getElementById('contactMessage').value;
+
+      // You can implement your form submission logic here (e.g., AJAX request)
+
+      alert(`Thank you, ${name}! Your message has been sent.`);
+      $('#contactModal').modal('hide'); // Hide the modal after submission
+    }
+  </script>
+</body>
+</html>
